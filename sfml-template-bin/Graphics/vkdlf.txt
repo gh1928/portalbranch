@@ -1,0 +1,8 @@
+blue.png
+button.png
+cube.png
+goal.png
+grid.png
+orange.png
+player.png
+vkdlf.txt

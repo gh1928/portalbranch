@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Manager\Animator.cpp" />
+    <ClCompile Include="FrameWork\InputMgr.cpp" />
+    <ClCompile Include="Objects\Object.cpp" />
+    <ClCompile Include="Objects\SpriteObj.cpp" />
+    <ClCompile Include="Scene\PlayScene.cpp" />
+    <ClCompile Include="Scene\MapList.cpp" />
+    <ClCompile Include="Scene\EditScene.cpp" />
+    <ClCompile Include="FrameWork\Framework.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Manager\ResourceMgr.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\SceneMgr.cpp" />
+    <ClCompile Include="FrameWork\Utils.cpp" />
+    <ClCompile Include="Scene\StartMenu.cpp" />
+    <ClCompile Include="Objects\Tile.cpp" />
+    <ClCompile Include="Objects\Cube.cpp" />
+    <ClCompile Include="Objects\Button.cpp" />
+    <ClCompile Include="Objects\Player.cpp" />
+    <ClCompile Include="Objects\Goal.cpp" />
+    <ClCompile Include="Objects\Blue.cpp" />
+    <ClCompile Include="Objects\Orange.cpp" />
+    <ClCompile Include="Objects\Wire.cpp" />
+    <ClCompile Include="Objects\WireableObject.cpp" />
+    <ClCompile Include="Objects\WirePointArrows.cpp" />
+    <ClCompile Include="Objects\NumBox.cpp" />
+    <ClCompile Include="Particle\Particle.cpp" />
+    <ClCompile Include="Particle\ParticleSystem.cpp" />
+    <ClCompile Include="src\Color.cpp" />
+    <ClCompile Include="src\Constants.cpp" />
+    <ClCompile Include="src\DirectedLight.cpp" />
+    <ClCompile Include="src\LightingArea.cpp" />
+    <ClCompile Include="src\LightSource.cpp" />
+    <ClCompile Include="src\Line.cpp" />
+    <ClCompile Include="src\Polygon.cpp" />
+    <ClCompile Include="src\RadialLight.cpp" />
+    <ClCompile Include="src\VertexArray.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Manager\Animator.h" />
+    <ClInclude Include="FrameWork\InputMgr.h" />
+    <ClInclude Include="Objects\Object.h" />
+    <ClInclude Include="Objects\SpriteObj.h" />
+    <ClInclude Include="Scene\PlayScene.h" />
+    <ClInclude Include="Scene\MapList.h" />
+    <ClInclude Include="Scene\EditScene.h" />
+    <ClInclude Include="FrameWork\Const.h" />
+    <ClInclude Include="FrameWork\EnumClasses.h" />
+    <ClInclude Include="FrameWork\Framework.h" />
+    <ClInclude Include="FrameWork\stdafx.h" />
+    <ClInclude Include="FrameWork\Utils.h" />
+    <ClInclude Include="Manager\ResourceMgr.h" />
+    <ClInclude Include="3rd\rapidcsv.h" />
+    <ClInclude Include="3rd\Singleton.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SceneMgr.h" />
+    <ClInclude Include="Scene\StartMenu.h" />
+    <ClInclude Include="Objects\Tile.h" />
+    <ClInclude Include="FrameWork\ObjectHeaders.h" />
+    <ClInclude Include="Objects\Cube.h" />
+    <ClInclude Include="Objects\Button.h" />
+    <ClInclude Include="Objects\Player.h" />
+    <ClInclude Include="Objects\Goal.h" />
+    <ClInclude Include="Objects\Blue.h" />
+    <ClInclude Include="Objects\Orange.h" />
+    <ClInclude Include="Objects\Wire.h" />
+    <ClInclude Include="Objects\WireableObject.h" />
+    <ClInclude Include="Objects\WirePointArrows.h" />
+    <ClInclude Include="Objects\NumBox.h" />
+    <ClInclude Include="Particle\Particle.h" />
+    <ClInclude Include="Particle\ParticleSystem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
