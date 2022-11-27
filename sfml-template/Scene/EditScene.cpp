@@ -9,9 +9,10 @@
 #include "../FrameWork/Utils.h"
 #include "../FrameWork/ObjectHeaders.h"
 #include <fstream>
-
+#include "../Objects/FileData.h"
 #include <filesystem>
 namespace fs = std::filesystem;
+using json = nlohmann::json;
 
 EditScene::EditScene()
 {
@@ -1168,7 +1169,7 @@ void EditScene::Save()
 
 	string mapName = "Map/";
 	mapName += saveString.isEmpty() ? "temp" : saveString;
-	mapName += ".txt";
+	mapName += ".json";
 
 	saveString.clear();
 	saveText.setString(saveString);	
@@ -1200,52 +1201,76 @@ void EditScene::Save()
 		return;
 	}
 
-	ofstream map(mapName);
-	
-	for (int i = colNum - 1; i >= 0 ; i--)
+	ofstream map(mapName);	
+	Data_struct saveObjInfo;	
+	saveObjInfo.size.row = rowNum;
+	saveObjInfo.size.col = colNum;
+
+	for (int i = colNum - 1; i >= 0; i--)
 	{
 		for (int j = 0; j < rowNum; j++)
 		{
-			vector<string> strs;
-			for (int k = 0; k < 4; k++)
+			if (!mapTool[i][j].first.empty())
 			{
-				strs.push_back(":0");
-			}
-
-			for (auto obj : mapTool[i][j].first)
-			{
-				for (int k = 0; k < strs.size(); k++)
+				for (auto tool : mapTool[i][j].first)
 				{
-					if ((int)obj->GetRotation() == k)
+					switch (tool->GetId())
 					{
-						strs[k].pop_back();
-						strs[k] += obj->GetId();
-						if (obj->GetObjType() == ObjectType::Trigger ||
-							obj->GetObjType() == ObjectType::Catcher)
+					case '1':
+					{
+						Tile_struct tile;
+						tile.posX = j;
+						tile.posY = i;
+						saveObjInfo.tiles.push_back(tile);
+						break;
+					}
+					case '@':
+					{
+						Goal_struct goal;
+						goal.posX = j;
+						goal.posY = i;
+						WireableObject* wobj = (WireableObject*)tool;
+						for (auto w : wobj->GetWireListFromMapTool())
 						{
-							strs[k] += '(';
-							WireableObject* wobj = (WireableObject*)obj;
-							for (auto w : wobj->GetWireListFromMapTool())
-							{
-								strs[k] += to_string(w) + ' ';
-							}
-							strs[k] += ')';
+							goal.buttonList.push_back(w);
 						}
+						saveObjInfo.goal = goal;
+						break;
+					}
+					case 'c':
+					{
+						Cube_struct cube;
+						cube.posX = j;
+						cube.posY = i;
+						saveObjInfo.cubes.push_back(cube);
+						break;
+					}
+						break;
+					case 'p':
+					{
+						Player_struct player;
+						player.posX = j;
+						player.posY = i;
+						saveObjInfo.player = player;
+						break;
+					}
+					case 'b':
+					{
+						Button_sturct button;
+						button.posX = j;
+						button.posY = i;
+						WireableObject* wobj = (WireableObject*)tool;
+						button.id = wobj->GetWireListFromMapTool().front();
+						saveObjInfo.buttons.push_back(button);
+					}					
 					}
 				}
-			}	
-
-			map << '[';
-			for (int k = 0; k < strs.size(); k++)
-			{
-				map << strs[k];
 			}
-			map << ']';
 		}
-		if (i == 0)
-			continue;
-		map << '\n';
-	}	
+	}
+
+	json save_js = saveObjInfo;
+	map << save_js;
 
 	saveMsg.setString("Save succeed");
 	Utils::SetOrigin(saveMsg, Origins::MC);	

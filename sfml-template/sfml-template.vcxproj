@@ -189,6 +189,7 @@
     <ClCompile Include="src\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\FileData.h" />
     <ClInclude Include="Objects\NumBox.h" />
     <ClInclude Include="Objects\Blue.h" />
     <ClInclude Include="Objects\Goal.h" />

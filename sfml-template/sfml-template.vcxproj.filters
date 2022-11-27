@@ -71,6 +71,7 @@
     <ClInclude Include="Objects\NumBox.h" />
     <ClInclude Include="Particle\Particle.h" />
     <ClInclude Include="Particle\ParticleSystem.h" />
+    <ClInclude Include="Objects\FileData.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
